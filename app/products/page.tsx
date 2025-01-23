@@ -1,7 +1,7 @@
 import { DataTable } from "../_components/ui/data-table";
 import { productTableColumns } from "./_components/table-columns";
 import { getProducts } from "../_data-access/product/get-products";
-import AddProductButton from "./_components/add-product-button";
+import CreateProductButton from "./_components/create-product-button";
 
 const ProductPage = async () => {
   const products = await getProducts();
@@ -17,7 +17,7 @@ const ProductPage = async () => {
           </span>
           <h2 className="text-xl font-bold">Produtos</h2>
         </div>
-        <AddProductButton />
+        <CreateProductButton />
       </div>
       <DataTable
         columns={productTableColumns}
