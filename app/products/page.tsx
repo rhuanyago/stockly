@@ -1,10 +1,10 @@
 import { DataTable } from "../_components/ui/data-table";
 import { productTableColumns } from "./_components/table-columns";
-import { getProducts } from "../_data-access/product/get-products";
+import { cachedGetProducts } from "../_data-access/product/get-products";
 import CreateProductButton from "./_components/create-product-button";
 
 const ProductPage = async () => {
-  const products = await getProducts();
+  const products = await cachedGetProducts();
   // const response = await fetch("http://localhost:3000/api/products");
   // const products = await response.json();
 
