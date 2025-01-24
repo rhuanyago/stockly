@@ -2,6 +2,13 @@ import { DataTable } from "../_components/ui/data-table";
 import { productTableColumns } from "./_components/table-columns";
 import { cachedGetProducts } from "../_data-access/product/get-products";
 import CreateProductButton from "./_components/create-product-button";
+import Header, {
+  HeaderLeft,
+  HeaderTitle,
+  HeaderSubtitle,
+  HeaderRight,
+} from "../_components/ui/header";
+1;
 
 const ProductPage = async () => {
   const products = await cachedGetProducts();
@@ -10,20 +17,16 @@ const ProductPage = async () => {
 
   return (
     <div className="m-8 w-full space-y-8 rounded-lg bg-white p-8 shadow">
-      <div className="flex w-full items-center justify-between">
-        <div className="space-y-1">
-          <span className="text-xs font-semibold text-slate-500">
-            Gestão de Produtos
-          </span>
-          <h2 className="text-xl font-bold">Produtos</h2>
-        </div>
-        <CreateProductButton />
-      </div>
-      <DataTable
-        columns={productTableColumns}
-        data={JSON.parse(JSON.stringify(products))}
-        // data={products}
-      />
+      <Header>
+        <HeaderLeft>
+          <HeaderTitle>Produtos</HeaderTitle>
+          <HeaderSubtitle>Gestão de Produtos</HeaderSubtitle>
+        </HeaderLeft>
+        <HeaderRight>
+          <CreateProductButton />
+        </HeaderRight>
+      </Header>
+      <DataTable columns={productTableColumns} data={products} />
     </div>
   );
 };
