@@ -28,15 +28,18 @@ import { Loader2Icon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { NumericFormat } from "react-number-format";
 import { toast } from "sonner";
+import { useAction } from "next-safe-action/hooks";
+import { flattenValidationErrors } from "next-safe-action";
+import { Dispatch, SetStateAction } from "react";
 
 interface UpsertProductDialogContentProps {
   defaultValues?: UpsertProductSchema;
-  onSuccess?: () => void;
+  setDialogIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const UpsertProductDialogContent = ({
   defaultValues,
-  onSuccess,
+  setDialogIsOpen,
 }: UpsertProductDialogContentProps) => {
   const form = useForm<UpsertProductSchema>({
     shouldUnregister: true,
@@ -48,18 +51,21 @@ const UpsertProductDialogContent = ({
     },
   });
 
+  const { execute: executeUpsertProduct } = useAction(upsertProduct, {
+    onError: ({ error: { validationErrors, serverError } }) => {
+      const isValidationError = flattenValidationErrors(validationErrors);
+      toast.error(serverError ?? isValidationError.formErrors[0]);
+    },
+    onSuccess: () => {
+      toast.success(
+        `Produto ${defaultValues ? "atualizado" : "criado"} com sucesso!`,
+      );
+      setDialogIsOpen(false);
+    },
+  });
+
   const onSubmit = async (data: UpsertProductSchema) => {
-    try {
-      await upsertProduct({ ...data, id: defaultValues?.id });
-      onSuccess?.();
-      if (defaultValues) {
-        toast.success("Produto atualizado com sucesso.");
-        return;
-      }
-      toast.success("Produto criado com sucesso.");
-    } catch (error) {
-      toast.error("Ocorreu um erro ao criar o produto.");
-    }
+    executeUpsertProduct({ ...data, id: defaultValues?.id });
   };
 
   const isEditing = !!defaultValues;

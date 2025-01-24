@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath, revalidateTag } from "next/cache";
-import { createSaleSchema, CreateSaleSchema } from "./schema";
+import { createSaleSchema } from "./schema";
 import { db } from "@/app/_lib/prisma";
 import { actionClient } from "@/app/_lib/safe-action";
 import { returnValidationErrors } from "next-safe-action";
