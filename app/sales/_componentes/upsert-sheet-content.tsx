@@ -71,6 +71,8 @@ const UpsertSheetContent = ({
   setSheetIsOpen,
   defaultSelectedProducts,
 }: UpsertSheetContentProps) => {
+  const isEditing = !!saleId;
+
   const [selectedProducts, setSelectedProducts] = useState<SelectedProduct[]>(
     defaultSelectedProducts ?? [],
   );
@@ -80,7 +82,9 @@ const UpsertSheetContent = ({
       toast.error(serverError ?? isValidationError.formErrors[0]);
     },
     onSuccess: () => {
-      toast.success("Venda criada com sucesso.");
+      toast.success(
+        `${isEditing ? "Venda atualizada" : "Venda criada"} com sucesso!`,
+      );
       setSheetIsOpen(false);
     },
   });
@@ -173,7 +177,7 @@ const UpsertSheetContent = ({
   return (
     <SheetContent className="!max-w-[700px]">
       <SheetHeader>
-        <SheetTitle>Nova venda</SheetTitle>
+        <SheetTitle>{isEditing ? "Editar" : "Nova"} venda</SheetTitle>
         <SheetDescription>
           Insira as informações da venda abaixo.
         </SheetDescription>
