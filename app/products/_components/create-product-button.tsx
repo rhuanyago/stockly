@@ -31,6 +31,7 @@ import {
   createProductSchema,
   CreateProductSchema,
 } from "@/app/_actions/products/create-product/schema";
+import { toast } from "sonner";
 
 const CreateProductButton = () => {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -49,6 +50,7 @@ const CreateProductButton = () => {
     try {
       await createProduct(data);
       setDialogIsOpen(false);
+      toast.success("Produto criado com sucesso!");
     } catch (error) {
       console.log(error);
     }
