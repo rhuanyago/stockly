@@ -5,7 +5,7 @@ import Header, {
   HeaderTitle,
   HeaderSubtitle,
   HeaderRight,
-} from "../_components/ui/header";
+} from "../_components/header";
 import { getProducts } from "../_data-access/product/get-products";
 import { getSales } from "../_data-access/sale/get-sales";
 import UpsertSaleButton from "./_componentes/create-sale-button";

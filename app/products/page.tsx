@@ -7,7 +7,7 @@ import Header, {
   HeaderTitle,
   HeaderSubtitle,
   HeaderRight,
-} from "../_components/ui/header";
+} from "../_components/header";
 1;
 
 const ProductPage = async () => {
