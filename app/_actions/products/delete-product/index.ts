@@ -22,4 +22,6 @@ export const deleteProduct = actionClient
     }
 
     revalidatePath("/products");
+    revalidatePath("/dashboard");
+    revalidatePath("/sales");
   });
