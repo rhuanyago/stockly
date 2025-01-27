@@ -23,7 +23,11 @@ const UpsertSaleButton = (props: UpsertSaleButtonProps) => {
           Nova Venda
         </Button>
       </SheetTrigger>
-      <UpsertSheetContent {...props} setSheetIsOpen={setSheetIsOpen} />
+      <UpsertSheetContent
+        isOpen={sheetIsOpen}
+        {...props}
+        setSheetIsOpen={setSheetIsOpen}
+      />
     </Sheet>
   );
 };
