@@ -1,28 +1,14 @@
-import {
-  CircleDollarSign,
-  DollarSign,
-  PackageIcon,
-  ShoppingBasketIcon,
-} from "lucide-react";
 import Header, {
   HeaderLeft,
   HeaderSubtitle,
   HeaderTitle,
 } from "../_components/header";
-import {
-  SummaryCard,
-  SummaryCardIcon,
-  SummaryCardSkeleton,
-  SummaryCardTitle,
-  SummaryCardValue,
-} from "./_componentes/summary-card";
+import { SummaryCardSkeleton } from "./_componentes/summary-card";
 import { getDashboard } from "../_data-access/dashboard/get-dashboard";
-import { formatCurrency } from "../helpers/currency";
 import RevenueChart from "./_componentes/revenue-chart";
 import MostSoldProductsItem from "./_componentes/most-sold-products-item";
 import TotalRevenueCard from "./_componentes/total-revenue-card";
 import { Suspense } from "react";
-import { Skeleton } from "../_components/ui/skeleton";
 import TodayRevenueCard from "./_componentes/today-revenue-card";
 import TotalSalesCard from "./_componentes/total-sales-card";
 import TotalStockCard from "./_componentes/total-stock-card";
