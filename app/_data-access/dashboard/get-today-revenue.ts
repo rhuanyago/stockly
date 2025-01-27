@@ -1,3 +1,5 @@
+import "server-only";
+
 import { db } from "@/app/_lib/prisma";
 
 export const getTodayRevenue = async (): Promise<number> => {
@@ -12,9 +14,11 @@ export const getTodayRevenue = async (): Promise<number> => {
   const startOfDay = new Date(new Date().setHours(0, 0, 0, 0));
   const endOfDay = new Date(new Date().setHours(23, 59, 59, 999));
 
-  const todayRevenuePromise = await db.$queryRawUnsafe<
-    { todayRevenue: number }[]
-  >(todayRevenueQuery, startOfDay, endOfDay);
+  const todayRevenue = await db.$queryRawUnsafe<{ todayRevenue: number }[]>(
+    todayRevenueQuery,
+    startOfDay,
+    endOfDay,
+  );
 
-  return todayRevenuePromise[0].todayRevenue;
+  return todayRevenue[0].todayRevenue;
 };
