@@ -282,7 +282,7 @@ const UpsertSheetContent = ({
 
       <SheetFooter className="pt-6">
         <Button
-          className="w-full gap-2"
+          className="w-full gap-2 rounded-xl"
           disabled={!selectedProducts.length || form.formState.isSubmitting}
           onClick={handleOnSubmitSale}
         >
