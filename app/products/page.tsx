@@ -16,7 +16,7 @@ const ProductPage = async () => {
   // const products = await response.json();
 
   return (
-    <div className="m-8 w-full space-y-8 rounded-lg bg-white p-8 shadow">
+    <div className="m-8 w-full space-y-8 overflow-auto rounded-lg bg-white p-8 shadow">
       <Header>
         <HeaderLeft>
           <HeaderTitle>Produtos</HeaderTitle>
